@@ -1,18 +1,18 @@
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, url_for, render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Home"
+    return render_template('index.html', content=['BTC', 'ETH', 'XRP'])
 
-@app.route('/<name>')
+@app.route('/user/<name>/')
 def user(name):
     return f"user: {name}"
 
-@app.route('/admin')
+@app.route('/admin/')
 def admin():
-    return redirect(url_for('home'))
+    return redirect(url_for('user', name='Admin!'))
 
 if __name__ == '__main__':
     app.run(debug=True)
