@@ -1,0 +1,32 @@
+.login-container{
+    height: 100VH;
+    display: flex;
+    overflow: hidden;
+}
+
+.left-panel {
+    height: 100%;
+    width: 40%;
+}
+
+.left-panel-title {
+    margin-top: 25VH;
+    padding-left: 5VW;
+    padding-right: 5VW;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+    padding-top: 25VH;
+    padding-left: 5VW;
+    padding-right: 5VW;
+}
+
+.form-control:focus {
+    border-color: #212529;
+    /* box-shadow: 0 0 0 0.1rem rgba(41, 46, 51, 0.25); */
+    box-shadow: 0 0 0 0rem rgba(41, 46, 51, 0.25);
+} 

@@ -1,23 +1,27 @@
-from flask import Flask, app, redirect, url_for, render_template
+from flask import Flask, app, request, redirect, url_for, render_template
 
 app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = -1
+app.config["SEND_FILE_MAX_AGE_DEFAULT"] = -1
 
-@app.route('/')
+@app.route("/")
 def home():
-    return render_template('index.html', content=['BTC', 'ETH', 'XRP'])
+  return render_template("index.html", content=["BTC", "ETH", "XRP"])
 
-@app.route('/dashboard')
+@app.route("/dashboard")
 def dashboard():
-    return render_template('dashboard.html', content=['BTC', 'ETH', 'XRP'])
+  return render_template("dashboard.html", content=["BTC", "ETH", "XRP"])
 
-@app.route('/user/<name>/')
-def user(name):
-    return f"user: {name}"
+@app.route("/login", methods=["POST", "GET"])
+def login():
+  if request.method == "POST":
+    user = request.form["username"]
+    return redirect(url_for("user", user=user))
+  else:
+    return render_template("login.html")
 
-@app.route('/admin/')
-def admin():
-    return redirect(url_for('user', name='Admin!'))
+@app.route("/user/<user>")
+def user(user):
+  return f"<h1>{user}</h1>"
 
-if __name__ == '__main__':
-    app.run(debug=True)
+if __name__ == "__main__":
+  app.run(debug=True)
