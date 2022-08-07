@@ -1,16 +1,19 @@
 root = true
 
 [*]
-indent_style = space
+indent_style = tab
 indent_size = 1
+tab_width = 1
 
 [**]
-indent_style = space
+indent_style = tab
 indent_size = 1
+tab_width = 1
 
 [*.{js,py,html}]
-indent_style = space
+indent_style = tab
 indent_size = 1
+tab_width = 1
 
 // Ctrl+K, Ctrl+E
 // https://editorconfig.org/#supported-properties

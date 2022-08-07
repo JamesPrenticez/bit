@@ -15,6 +15,16 @@
 </head>
 
 <body>
+
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for msg in messages %}
+        <p>{{msg}}</p>
+      {% endfor %}
+    {% endif %}  
+  {% endwith %}
+
+
   <main class="login-container">
     <div class="left-panel bg-dark text-bg-dark">
       <div class="left-panel-title">
