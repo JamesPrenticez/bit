@@ -5,3 +5,10 @@ body{
 h1{
     font-size: 2.5rem !important;
 }
+
+[contenteditable][placeholder]:empty:before {
+    content: attr(placeholder);
+    position: absolute;
+    color: red;
+    background-color: transparent;
+}
