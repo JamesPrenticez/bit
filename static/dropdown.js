@@ -7,9 +7,16 @@ customElements.define('search-dropdown',
       const shadowRoot = this.attachShadow({mode: 'open'})
       
       shadowRoot.appendChild(template.cloneNode(true))
+
+      template.addEventListener('mousemove', (e) => {
+        console.log("here")
+        console.log(e.offsetX, e.offsetY)
+      })
     }
   }
 )
+
+
 
 function toggle(self){
   let dropdown_items = self.children[2].style.display 
@@ -24,8 +31,9 @@ function toggle(self){
     self.children[2].style.display = 'none'
   }
 }
-
+https://stackoverflow.com/questions/152975/how-do-i-detect-a-click-outside-an-element
 function closeDropdown(self){
+  //if !element.contains(event.target)
   self.style.outline = 'solid 2px transparent'
   self.children[1].style.transform='rotate(90deg)'
   self.children[2].style.display = 'none'
@@ -43,9 +51,13 @@ function handleKeyUp(self, e){
     case "ArrowDown":
       handleArrowDown(self)
       break
-    case "Escape":
-      handleEscape(self)
-      break
+    // case "Escape":
+    //   handleEscape(self)
+    //   break
+    // case "Enter":
+    //   console.log(e)
+    //   select(self, e)
+    //   break
     default:
       search(self)
     }
@@ -66,13 +78,23 @@ function handleEscape(self){
 function search(self){
   let searchTerm = self.innerText
   let list = self.parentNode.children[2].children['dropdown-items'].assignedNodes()
-  let listCopy = Array.from(list[0].children)
+  let listRef = list[0].children
 
-  for(i=0; i <= listCopy.length -1; i++){
-    if(searchTerm == listCopy[i].innerText) console.log("Match")
+  //console.log(listRef[0].innerText)
+
+  for(i=0; i <= listRef.length -1; i++){
+    if(searchTerm == listRef[i].innerText){
+      console.log("Match")
+      listRef[i].style.backgroundColor = "green"
+    }
   }
 }
 
+function select(self, event){
+  let inputBox = self.parentNode.children[0]
+  let selection = event.target
+  inputBox.innerText = selection.innerText
+}
 // let x = self.parentNode.children[2].children['dropdown-items'].assignedNodes()
 // let y = itemList[0].children
 

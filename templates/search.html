@@ -23,10 +23,10 @@
       user-select: none;
     }
 
-    #dropdown-items > div:hover{
+    /* #dropdown-items > div:hover{
       color: white;
       background-color: #007BFF;
-    }
+    } */
   </style>
   
 </head>
@@ -101,17 +101,17 @@
   <div
     id="dropdown-container" 
     tabindex="0"
-    onclick="return toggle(this)"
-    >
-    <!-- onchange="search(this), console.log('change')" -->
-    <div 
-      id="dropdown-input"
-      type="text"
-      contenteditable="true"
-      placeholder="Enter some text..."
-      onkeyup="handleKeyUp(this, event)"
-      onblur="closeDropdown(this.parentNode)"
-    ></div>
+    
+  >
+  <!-- onchange="search(this), console.log('change')" -->
+  <div 
+    id="dropdown-input"
+    type="text"
+    contenteditable="true"
+    placeholder="Enter some text..."
+    onkeyup="handleKeyUp(this, event)"
+    onclick="toggle(this.parentNode)"
+  ></div>
 
     <svg 
       id="dropdown-arrow"
@@ -127,8 +127,9 @@
       <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
     </svg>
 
-    <div id="dropdown-items">
-      <slot name="dropdown-items"></slot>
+    <div id="dropdown-items" onclick="select(this, event)">
+      <slot name="dropdown-items">
+      </slot>
     </div>
   </div>
 
@@ -145,6 +146,23 @@
  </div>
 </search-dropdown>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
 <search-dropdown>
