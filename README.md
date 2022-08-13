@@ -20,3 +20,5 @@ https://www.youtube.com/playlist?list=PLzMcBGfZo4-n4vJJybUVV3Un_NFS5EOgX
   - Deploy static files with flask backend
   - You may need to set enviroment variable "export FLASK_DEBUG=True" for "flask run" to work in debug mode
   - To get auto reloading of static files working we need "export FLASK_RUN_EXTRA_FILES="templates/index.html""
+
+https://codepen.io/carlosngv/pen/VwKKBRK

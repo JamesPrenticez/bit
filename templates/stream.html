@@ -1,0 +1,35 @@
+{% block scripts %}
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- <script src="{{url_for('static', filename='progress.js')}}"></script> -->
+{% endblock %}
+
+
+
+<div class='flex flex-col space-y-4 p-4'>
+ <div class='w-full h-10 bg-gray-300 rounded-full'>
+  <div id="progressBar" class="h-10 rounded-full transition ease-in-out"
+   style="width: 0%; background-color: #007FFF; transition: width .1s ease-in-out;">
+  </div>
+  <p id="progressText" class='text-white text-[2rem] leading-[0rem] -mt-[1.25rem] text-center'>
+   0 %
+  </p>
+ </div>
+
+ <!-- <button class="h-12 w-24 bg-green-500 rounded-md text-white" onclick="progressTest()">
+  Test
+ </button> -->
+
+
+ {% for i in data: %}
+ <script>
+  progressBar.style.width = "{{ i }}" + "%"
+  progressText.innerText = "{{ i }}" + "%"
+
+  if("{{i}}" === "100"){
+   window.location = '/'
+  }
+
+ </script>
+ {% endfor %}
+
+</div>
